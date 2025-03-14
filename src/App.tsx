@@ -6,8 +6,10 @@ import { MessageList } from './components/MessageList';
 import { ChatInput } from './components/ChatInput';
 
 // Socket connection
-// Replace with your NestJS backend URL
-const socket = io('https://localhost:3000', {
+// Use environment variable or fallback to localhost for development
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://localhost:3000';
+
+const socket = io(BACKEND_URL, {
   reconnection: true,
   reconnectionAttempts: Infinity,
   reconnectionDelay: 1000,
